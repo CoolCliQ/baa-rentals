@@ -42,3 +42,6 @@ next-env.d.ts
 
 # design source export (kept locally, not part of the site)
 /stitch_bay_area_car_rentals_website/
+
+# static export output
+/out/

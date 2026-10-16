@@ -1,0 +1,7 @@
+# The site is a static export: `npm run build` writes plain HTML/CSS/JS to `out/`.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
