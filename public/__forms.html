@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <title>Forms</title>
+  </head>
+  <body>
+    <!--
+      Netlify Forms definition for the React lead form (src/components/lead/lead-dialog.tsx).
+      Netlify reads this at deploy time; field names must match what the form submits.
+    -->
+    <form name="lead" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="lead" />
+      <input name="bot-field" />
+      <input name="name" />
+      <input name="phone" type="tel" />
+      <input name="pickup_date" />
+      <input name="pickup_time" />
+      <input name="duration" />
+      <input name="car_preference" />
+      <input name="source" />
+    </form>
+  </body>
+</html>

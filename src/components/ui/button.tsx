@@ -17,12 +17,11 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
-        brand:
-          "bg-linear-to-r from-primary to-secondary-container text-on-primary shadow-md hover:-translate-y-px hover:shadow-lg",
-        dark: "bg-inverse-surface text-inverse-on-surface hover:bg-on-surface",
-        tonal: "bg-surface-container text-on-surface hover:bg-surface-container-high",
-        amber:
-          "bg-secondary-container text-on-secondary-container shadow-sm hover:bg-secondary-fixed-dim",
+        // Rent Drive CTAs
+        accent: "bg-sun text-navy shadow-sm hover:bg-sun-600",
+        navy: "bg-navy text-white hover:bg-navy-800",
+        "outline-navy": "border-line bg-white text-navy hover:border-navy/30 hover:bg-canvas",
+        "outline-light": "border-white/30 bg-white/5 text-white hover:bg-white/15",
       },
       size: {
         default:
@@ -36,12 +35,9 @@ const buttonVariants = cva(
         "icon-sm":
           "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
         "icon-lg": "size-9",
-        // Explicit type values (label-md / headline-sm) so they override the base text-sm.
-        "pill-sm":
-          "h-auto gap-1.5 rounded-full px-4 py-2 text-[12px]/4 font-semibold tracking-[0.02em]",
-        pill: "h-auto gap-1.5 rounded-full px-4 py-2.5 text-[12px]/4 font-bold tracking-[0.02em] [&_svg:not([class*='size-'])]:size-[18px]",
-        "pill-lg":
-          "h-auto gap-2 rounded-full px-4 py-3.5 text-[18px]/[26px] font-semibold [&_svg:not([class*='size-'])]:size-5",
+        cta: "h-12 gap-2 rounded-full px-6 text-[15px] font-semibold [&_svg:not([class*='size-'])]:size-[18px]",
+        "cta-lg": "h-14 gap-2 rounded-full px-8 text-base font-semibold [&_svg:not([class*='size-'])]:size-5",
+        "cta-icon": "size-12 rounded-full [&_svg:not([class*='size-'])]:size-5",
       },
     },
     defaultVariants: {

@@ -1,21 +1,37 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+
+import { AnalyticsScripts } from "@/components/analytics-scripts";
+import { LeadProvider } from "@/components/lead/lead-provider";
+import { site } from "@/lib/site";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
+const description =
+  "Hourly, daily and weekly car rentals in Webster and the Houston Bay Area. Tell us when you need a car and we'll match you with the right one.";
+
 export const metadata: Metadata = {
-  title: "Bay Area Car Rentals | Hourly, Daily & Weekly Rentals in Webster, TX",
-  description:
-    "Flexible hourly, daily, and weekly car rentals in Webster, TX. Pick up on Bay Area Blvd near NASA Johnson Space Center and drive across Clear Lake, Houston, and Galveston Bay.",
+  metadataBase: new URL(site.url),
+  title: `${site.name} | Car Rental in Webster & Houston Bay Area`,
+  description,
+  applicationName: site.name,
+  openGraph: {
+    type: "website",
+    url: site.url,
+    siteName: site.name,
+    title: site.name,
+    description,
+    images: ["/images/hero.jpg"],
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f8f9ff",
+  themeColor: "#ffffff",
   viewportFit: "cover",
 };
 
@@ -26,7 +42,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${plusJakartaSans.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <LeadProvider>{children}</LeadProvider>
+        <AnalyticsScripts />
+      </body>
     </html>
   );
 }

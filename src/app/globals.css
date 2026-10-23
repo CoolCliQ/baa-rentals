@@ -48,120 +48,53 @@
 }
 
 :root {
-  /* shadcn tokens mapped onto the Bay Area Velocity palette */
-  --background: #f8f9ff;
-  --foreground: #0b1c30;
+  /* shadcn tokens mapped onto the Rent Drive logo palette (navy + yellow) */
+  --background: #ffffff;
+  --foreground: #0b1b30;
   --card: #ffffff;
-  --card-foreground: #0b1c30;
+  --card-foreground: #0b1b30;
   --popover: #ffffff;
-  --popover-foreground: #0b1c30;
-  --primary: #a33900;
+  --popover-foreground: #0b1b30;
+  --primary: #051f3b;
   --primary-foreground: #ffffff;
-  --secondary: #855300;
-  --secondary-foreground: #ffffff;
-  --muted: #eff4ff;
-  --muted-foreground: #5a4138;
-  --accent: #e5eeff;
-  --accent-foreground: #0b1c30;
-  --destructive: #ba1a1a;
-  --border: #d3e4fe;
-  --input: #d3e4fe;
-  --ring: #a33900;
-  --chart-1: #a33900;
-  --chart-2: #fea619;
-  --chart-3: #855300;
-  --chart-4: #545c72;
-  --chart-5: #213145;
-  --radius: 0.625rem;
-  --sidebar: #eff4ff;
-  --sidebar-foreground: #0b1c30;
-  --sidebar-primary: #a33900;
+  --secondary: #f3f5f8;
+  --secondary-foreground: #051f3b;
+  --muted: #f3f5f8;
+  --muted-foreground: #5b6676;
+  --accent: #eef2f7;
+  --accent-foreground: #051f3b;
+  --destructive: #c62828;
+  --border: #e3e8ef;
+  --input: #d6dde7;
+  --ring: #051f3b;
+  --chart-1: #051f3b;
+  --chart-2: #f8bf08;
+  --chart-3: #1d3f66;
+  --chart-4: #e0a800;
+  --chart-5: #5b6676;
+  --radius: 0.75rem;
+  --sidebar: #f6f8fb;
+  --sidebar-foreground: #0b1b30;
+  --sidebar-primary: #051f3b;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #e5eeff;
-  --sidebar-accent-foreground: #0b1c30;
-  --sidebar-border: #d3e4fe;
-  --sidebar-ring: #a33900;
+  --sidebar-accent: #eef2f7;
+  --sidebar-accent-foreground: #051f3b;
+  --sidebar-border: #e3e8ef;
+  --sidebar-ring: #051f3b;
 }
 
-/* Bay Area Velocity design tokens (from the Stitch export) */
+/* Brand colours sampled from the Rent Drive logo */
 @theme {
-  --color-surface: #f8f9ff;
-  --color-surface-dim: #cbdbf5;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #eff4ff;
-  --color-surface-container: #e5eeff;
-  --color-surface-container-high: #dce9ff;
-  --color-surface-container-highest: #d3e4fe;
-  --color-on-surface: #0b1c30;
-  --color-on-surface-variant: #5a4138;
-  --color-inverse-surface: #213145;
-  --color-inverse-on-surface: #eaf1ff;
-  --color-outline: #8e7166;
-  --color-outline-variant: #e2bfb2;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #cc4900;
-  --color-primary-fixed: #ffdbce;
-  --color-primary-fixed-dim: #ffb599;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #fea619;
-  --color-on-secondary-container: #684000;
-  --color-secondary-fixed: #ffddb8;
-  --color-secondary-fixed-dim: #ffb95f;
-  --color-on-secondary-fixed: #2a1700;
-  --color-tertiary: #545c72;
-  --color-tertiary-container: #6c748b;
-  --color-on-tertiary-container: #fefcff;
-
-  --radius-tile: 1rem;
-  --radius-card: 2rem;
-
-  --text-display-hero: 52px;
-  --text-display-hero--line-height: 60px;
-  --text-display-hero--letter-spacing: -0.03em;
-  --text-display-hero--font-weight: 800;
-  --text-display-hero-mobile: 34px;
-  --text-display-hero-mobile--line-height: 40px;
-  --text-display-hero-mobile--letter-spacing: -0.02em;
-  --text-display-hero-mobile--font-weight: 800;
-  --text-headline-lg: 32px;
-  --text-headline-lg--line-height: 40px;
-  --text-headline-lg--letter-spacing: -0.02em;
-  --text-headline-lg--font-weight: 700;
-  --text-headline-md: 24px;
-  --text-headline-md--line-height: 32px;
-  --text-headline-md--letter-spacing: -0.01em;
-  --text-headline-md--font-weight: 700;
-  --text-headline-sm: 18px;
-  --text-headline-sm--line-height: 26px;
-  --text-headline-sm--font-weight: 600;
-  --text-body-lg: 16px;
-  --text-body-lg--line-height: 26px;
-  --text-body-lg--font-weight: 400;
-  --text-body-md: 14px;
-  --text-body-md--line-height: 22px;
-  --text-body-md--font-weight: 400;
-  --text-body-sm: 12px;
-  --text-body-sm--line-height: 18px;
-  --text-body-sm--font-weight: 400;
-  --text-label-lg: 14px;
-  --text-label-lg--line-height: 20px;
-  --text-label-lg--letter-spacing: 0.01em;
-  --text-label-lg--font-weight: 600;
-  --text-label-md: 12px;
-  --text-label-md--line-height: 16px;
-  --text-label-md--letter-spacing: 0.02em;
-  --text-label-md--font-weight: 600;
-  --text-label-caps: 11px;
-  --text-label-caps--line-height: 16px;
-  --text-label-caps--letter-spacing: 0.08em;
-  --text-label-caps--font-weight: 700;
-}
-
-@utility no-scrollbar {
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  --color-navy: #051f3b;
+  --color-navy-800: #0b2a4d;
+  --color-navy-600: #1d3f66;
+  --color-sun: #f8bf08;
+  --color-sun-600: #e6ad00;
+  --color-sun-50: #fff8e1;
+  --color-ink: #0b1b30;
+  --color-ink-muted: #5b6676;
+  --color-canvas: #f6f8fb;
+  --color-line: #e3e8ef;
 }
 
 @layer base {
@@ -169,7 +102,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-body-md text-foreground;
+    @apply bg-background text-foreground;
   }
   html {
     @apply scroll-smooth font-sans;
