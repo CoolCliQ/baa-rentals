@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { Phone } from "lucide-react"
 
 import { CallLink, LeadButton } from "@/components/cta"
@@ -9,7 +10,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-white/90 pt-[env(safe-area-inset-top,0px)] backdrop-blur-xl">
       <div className={`${container} flex h-16 items-center justify-between gap-4 md:h-20`}>
-        <a href="#top" className="shrink-0">
+        <Link href="/" className="shrink-0">
           <Image
             src="/brand/logo.png"
             alt={site.name}
@@ -18,13 +19,13 @@ export function SiteHeader() {
             priority
             className="h-9 w-auto md:h-11"
           />
-        </a>
+        </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.id}
-              href={`#${item.id}`}
+              href={`/#${item.id}`}
               className="text-[15px] font-medium text-ink-muted transition-colors hover:text-navy"
             >
               {item.label}

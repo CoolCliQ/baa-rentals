@@ -8,9 +8,8 @@ import { buttonVariants } from "@/components/ui/button"
 import { site } from "@/lib/site"
 
 export function SiteFooter() {
-  // Bottom padding keeps the copyright clear of the mobile booking bar.
   return (
-    <footer className="mt-20 border-t border-line pb-24 md:mt-28 md:pb-0">
+    <footer className="mt-20 border-t border-line md:mt-28">
       <div className={`${container} flex flex-col gap-10 py-14 md:flex-row md:items-start md:justify-between`}>
         <div className="max-w-xs">
           <Image src="/brand/logo.png" alt={site.name} width={720} height={187} className="h-10 w-auto" />

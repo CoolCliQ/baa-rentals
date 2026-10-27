@@ -3,7 +3,7 @@
 import { useRef, useState, type FormEvent } from "react"
 import { Select as SelectPrimitive } from "@base-ui/react/select"
 import { format } from "date-fns"
-import { CarFront, ChevronDown, CircleCheck, Loader2, Phone } from "lucide-react"
+import { CarFront, ChevronDown, Loader2, Phone } from "lucide-react"
 import { cn } from "cn"
 
 import {
@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/dialog"
 import { Select, SelectContent, SelectItem } from "@/components/ui/select"
 import { track } from "@/lib/analytics"
+import { THANK_YOU_PATH, saveLeadConfirmation } from "@/lib/lead-confirmation"
 import { carPreferences } from "@/lib/rental"
 import { site } from "@/lib/site"
 
@@ -34,7 +35,7 @@ const LEAD_ENDPOINT = "/__forms.html"
 const FORM_NAME = "lead"
 
 type Errors = Partial<Record<"name" | "phone" | "date" | "duration", string>>
-type Status = "idle" | "sending" | "success" | "error"
+type Status = "idle" | "sending" | "error"
 
 function validate(draft: LeadDraft): Errors {
   const errors: Errors = {}
@@ -61,7 +62,7 @@ export function LeadDialog({ open, onOpenChange, formKey, ...formProps }: LeadDi
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[calc(100dvh-1.5rem)] gap-0 overflow-y-auto rounded-3xl p-6 sm:max-w-md sm:p-8 max-sm:top-auto max-sm:bottom-0 max-sm:max-w-full max-sm:translate-y-0 max-sm:rounded-b-none">
         {/* Remount per open so each visit starts fresh (contact details persist in the draft). */}
-        <LeadForm key={formKey} onDone={() => onOpenChange(false)} {...formProps} />
+        <LeadForm key={formKey} {...formProps} />
       </DialogContent>
     </Dialog>
   )
@@ -72,8 +73,7 @@ function LeadForm({
   initialPreference,
   draft,
   updateDraft,
-  onDone,
-}: Omit<LeadDialogProps, "open" | "onOpenChange" | "formKey"> & { onDone: () => void }) {
+}: Omit<LeadDialogProps, "open" | "onOpenChange" | "formKey">) {
   const [preference, setPreference] = useState(initialPreference)
   const [errors, setErrors] = useState<Errors>({})
   const [status, setStatus] = useState<Status>("idle")
@@ -118,41 +118,21 @@ function LeadForm({
         body: body.toString(),
       })
       if (!response.ok) throw new Error(`Lead submission failed: ${response.status}`)
-      setStatus("success")
-      track("generate_lead", {
-        cta_location: source,
-        duration: draft.duration,
-        car_preference: preference,
+      saveLeadConfirmation({
+        firstName: draft.name.trim().split(/\s+/)[0],
+        phone: draft.phone.trim(),
+        pickupDate: body.get("pickup_date") ?? "",
+        pickupTime: draft.time,
+        duration: draft.duration ?? "",
+        carPreference: preference,
+        source,
       })
+      // A full page load (not client routing) so URL/page-view based conversion
+      // tracking sees /thank-you; generate_lead fires there.
+      window.location.assign(THANK_YOU_PATH)
     } catch {
       setStatus("error")
     }
-  }
-
-  if (status === "success") {
-    const firstName = draft.name.trim().split(/\s+/)[0]
-    return (
-      <div className="flex flex-col items-center py-4 text-center">
-        <div className="flex size-16 items-center justify-center rounded-full bg-sun-50">
-          <CircleCheck className="size-8 text-navy" aria-hidden />
-        </div>
-        <DialogTitle className="mt-5 text-2xl font-bold tracking-tight text-navy">
-          Thanks, {firstName}!
-        </DialogTitle>
-        <DialogDescription className="mt-2 max-w-xs text-[15px] text-ink-muted">
-          We&apos;ve got your request. Our team will call you at{" "}
-          <span className="font-semibold text-navy">{draft.phone.trim()}</span> shortly to confirm
-          your car and price.
-        </DialogDescription>
-        <button
-          type="button"
-          onClick={onDone}
-          className={cn(buttonVariants({ variant: "navy", size: "cta" }), "mt-7 w-full")}
-        >
-          Done
-        </button>
-      </div>
-    )
   }
 
   return (
