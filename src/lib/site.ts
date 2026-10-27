@@ -1,8 +1,8 @@
 export const site = {
   name: "Rent Drive Car Rentals",
   shortName: "Rent Drive",
-  domain: "rentdrive.in.com",
-  url: "https://rentdrive.in.com",
+  domain: "rentdriveit.com",
+  url: "https://www.rentdriveit.com",
   area: "Houston Bay Area",
   address: {
     street: "301 W Bay Area Blvd",
