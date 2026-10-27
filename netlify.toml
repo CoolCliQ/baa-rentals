@@ -5,3 +5,5 @@
 
 [build.environment]
   NODE_VERSION = "22"
+  # Google Tag Manager container (production only; local dev loads no tracking)
+  NEXT_PUBLIC_GTM_ID = "GTM-KSKLR8LT"
