@@ -11,8 +11,8 @@ export const site = {
   },
   mapsUrl: "https://maps.google.com/?q=301+W+Bay+Area+Blvd,+Webster,+TX+77598",
   phone: {
-    display: "+1 (281) 733-0057",
-    href: "tel:+12817330057",
+    display: "+1 (346) 447-5400",
+    href: "tel:+13464475400",
   },
   hours: {
     monSat: "7:30 AM – 8:00 PM",
