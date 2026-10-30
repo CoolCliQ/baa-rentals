@@ -67,7 +67,7 @@ function buildEmail(lead: Lead) {
   const rows = FIELDS.map((f) => [f.label, lead[f.key] || "—"] as const)
   const subject = `New rental enquiry: ${lead.name}, ${lead.duration} from ${lead.pickup_date}`
   const text = [
-    "New rental enquiry from rentdriveit.com",
+    "New rental enquiry from driveitrentalcars.com",
     "",
     ...rows.map(([label, value]) => `${label}: ${value}`),
     "",

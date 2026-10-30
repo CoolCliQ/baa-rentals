@@ -1,8 +1,8 @@
 export const site = {
   name: "DriveIt Rental Cars",
   shortName: "DriveIt",
-  domain: "rentdriveit.com",
-  url: "https://rentdriveit.com",
+  domain: "driveitrentalcars.com",
+  url: "https://driveitrentalcars.com",
   area: "Houston Bay Area",
   address: {
     street: "301 W Bay Area Blvd",
