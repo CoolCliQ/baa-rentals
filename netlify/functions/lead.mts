@@ -7,7 +7,7 @@
 //   MAILGUN_DOMAIN    required  verified Mailgun sending domain, e.g. mg.rentdriveit.com
 //   MAILGUN_REGION    optional  "us" (default) or "eu", wherever the domain was created
 //   LEAD_TO_EMAIL     optional  recipient(s), comma-separated; defaults to the business inbox
-//   LEAD_FROM_EMAIL   optional  sender; defaults to "Rent Drive Website <leads@MAILGUN_DOMAIN>"
+//   LEAD_FROM_EMAIL   optional  sender; defaults to "DriveIt Website <leads@MAILGUN_DOMAIN>"
 
 const DEFAULT_TO = "driveitrentalcars@gmail.com"
 const ALLOWED_HOSTS = ["rentdriveit.com", "www.rentdriveit.com", "localhost"]
@@ -69,7 +69,7 @@ function buildEmail(lead: Lead) {
   ].join("\n")
   const tel = `tel:${lead.phone.replace(/[^\d+]/g, "")}`
   const html = `<div style="font-family:Arial,sans-serif;font-size:15px;color:#0b1b30">
-<h2 style="margin:0 0 12px;color:#051f3b">New rental enquiry</h2>
+<h2 style="margin:0 0 12px;color:#042d55">New rental enquiry</h2>
 <table cellpadding="8" style="border-collapse:collapse">
 ${rows
   .map(
@@ -125,7 +125,7 @@ const handler = async (req: Request) => {
   }
   const base = process.env.MAILGUN_REGION?.toLowerCase() === "eu" ? "https://api.eu.mailgun.net" : "https://api.mailgun.net"
   const to = (process.env.LEAD_TO_EMAIL || DEFAULT_TO).split(",").map((s) => s.trim()).filter(Boolean)
-  const from = process.env.LEAD_FROM_EMAIL || `Rent Drive Website <leads@${domain}>`
+  const from = process.env.LEAD_FROM_EMAIL || `DriveIt Website <leads@${domain}>`
 
   const { subject, text, html } = buildEmail(lead)
   const form = new FormData()

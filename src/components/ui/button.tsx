@@ -17,7 +17,7 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
         link: "text-primary underline-offset-4 hover:underline",
-        // Rent Drive CTAs
+        // DriveIt CTAs
         accent: "bg-sun text-navy shadow-sm hover:bg-sun-600",
         navy: "bg-navy text-white hover:bg-navy-800",
         "outline-navy": "border-line bg-white text-navy hover:border-navy/30 hover:bg-canvas",

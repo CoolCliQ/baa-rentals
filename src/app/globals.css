@@ -48,49 +48,49 @@
 }
 
 :root {
-  /* shadcn tokens mapped onto the Rent Drive logo palette (navy + yellow) */
+  /* shadcn tokens mapped onto the DriveIt logo palette (navy + gold) */
   --background: #ffffff;
   --foreground: #0b1b30;
   --card: #ffffff;
   --card-foreground: #0b1b30;
   --popover: #ffffff;
   --popover-foreground: #0b1b30;
-  --primary: #051f3b;
+  --primary: #042d55;
   --primary-foreground: #ffffff;
   --secondary: #f3f5f8;
-  --secondary-foreground: #051f3b;
+  --secondary-foreground: #042d55;
   --muted: #f3f5f8;
   --muted-foreground: #5b6676;
   --accent: #eef2f7;
-  --accent-foreground: #051f3b;
+  --accent-foreground: #042d55;
   --destructive: #c62828;
   --border: #e3e8ef;
   --input: #d6dde7;
-  --ring: #051f3b;
-  --chart-1: #051f3b;
-  --chart-2: #f8bf08;
-  --chart-3: #1d3f66;
-  --chart-4: #e0a800;
+  --ring: #042d55;
+  --chart-1: #042d55;
+  --chart-2: #fdc807;
+  --chart-3: #1f4f80;
+  --chart-4: #f0b400;
   --chart-5: #5b6676;
   --radius: 0.75rem;
   --sidebar: #f6f8fb;
   --sidebar-foreground: #0b1b30;
-  --sidebar-primary: #051f3b;
+  --sidebar-primary: #042d55;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #eef2f7;
-  --sidebar-accent-foreground: #051f3b;
+  --sidebar-accent-foreground: #042d55;
   --sidebar-border: #e3e8ef;
-  --sidebar-ring: #051f3b;
+  --sidebar-ring: #042d55;
 }
 
-/* Brand colours sampled from the Rent Drive logo */
+/* Brand colours sampled from the DriveIt logo */
 @theme {
-  --color-navy: #051f3b;
-  --color-navy-800: #0b2a4d;
-  --color-navy-600: #1d3f66;
-  --color-sun: #f8bf08;
-  --color-sun-600: #e6ad00;
-  --color-sun-50: #fff8e1;
+  --color-navy: #042d55;
+  --color-navy-800: #0b3a68;
+  --color-navy-600: #1f4f80;
+  --color-sun: #fdc807;
+  --color-sun-600: #f0b400;
+  --color-sun-50: #fff9df;
   --color-ink: #0b1b30;
   --color-ink-muted: #5b6676;
   --color-canvas: #f6f8fb;

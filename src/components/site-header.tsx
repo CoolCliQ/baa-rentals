@@ -14,10 +14,10 @@ export function SiteHeader() {
           <Image
             src="/brand/logo.png"
             alt={site.name}
-            width={720}
-            height={187}
+            width={800}
+            height={314}
             priority
-            className="h-9 w-auto md:h-11"
+            className="h-11 w-auto md:h-14"
           />
         </Link>
 

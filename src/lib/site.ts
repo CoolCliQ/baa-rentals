@@ -1,6 +1,6 @@
 export const site = {
-  name: "Rent Drive Car Rentals",
-  shortName: "Rent Drive",
+  name: "DriveIt Rental Cars",
+  shortName: "DriveIt",
   domain: "rentdriveit.com",
   url: "https://rentdriveit.com",
   area: "Houston Bay Area",
@@ -22,7 +22,7 @@ export const site = {
 } as const
 
 export const navItems = [
-  { id: "why", label: "Why Rent Drive" },
+  { id: "why", label: "Why DriveIt" },
   { id: "cars", label: "Cars" },
   { id: "location", label: "Location" },
 ] as const

@@ -15,7 +15,7 @@ export function Benefits() {
     <section id="why" className={`${container} scroll-mt-24 py-20 md:py-28`}>
       <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <Eyebrow>Why Rent Drive</Eyebrow>
+          <Eyebrow>Why DriveIt</Eyebrow>
           <h2 className="mt-4 max-w-md text-3xl font-bold tracking-tight text-navy md:text-4xl">
             Renting a car, made simple.
           </h2>

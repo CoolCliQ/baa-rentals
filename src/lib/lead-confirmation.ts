@@ -3,8 +3,8 @@
 
 export const THANK_YOU_PATH = "/thank-you"
 
-const LEAD_KEY = "rentdrive:lead"
-const PENDING_EVENT_KEY = "rentdrive:lead-event"
+const LEAD_KEY = "driveit:lead"
+const PENDING_EVENT_KEY = "driveit:lead-event"
 
 export type LeadConfirmation = {
   firstName: string
