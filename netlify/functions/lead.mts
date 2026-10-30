@@ -4,12 +4,14 @@
 // Environment variables (set in Netlify > Site configuration > Environment
 // variables; values in netlify.toml are NOT visible to functions):
 //   MAILGUN_API_KEY   required  Mailgun API key
-//   MAILGUN_DOMAIN    required  verified Mailgun sending domain, e.g. mg.driveitrentalcars.com
+//   MAILGUN_DOMAIN    required  verified Mailgun sending domain, e.g. mg.example.com
 //   MAILGUN_REGION    optional  "us" (default) or "eu", wherever the domain was created
-//   LEAD_TO_EMAIL     optional  recipient(s), comma-separated; defaults to the business inbox
+//   LEAD_TO_EMAIL     required  recipient(s), comma-separated
 //   LEAD_FROM_EMAIL   optional  sender; defaults to "DriveIt Website <leads@MAILGUN_DOMAIN>"
+//
+// Keep real addresses/domains out of this repo: Netlify's secret scanning fails
+// the build if values of env vars marked "secret" appear in the code.
 
-const DEFAULT_TO = "driveitrentalcars@gmail.com"
 const ALLOWED_HOSTS = [
   "rentdriveit.com",
   "www.rentdriveit.com",
@@ -125,12 +127,12 @@ const handler = async (req: Request) => {
 
   const apiKey = process.env.MAILGUN_API_KEY
   const domain = process.env.MAILGUN_DOMAIN
-  if (!apiKey || !domain) {
-    console.error("Lead not sent: MAILGUN_API_KEY or MAILGUN_DOMAIN is not set.")
+  const to = (process.env.LEAD_TO_EMAIL ?? "").split(",").map((s) => s.trim()).filter(Boolean)
+  if (!apiKey || !domain || to.length === 0) {
+    console.error("Lead not sent: MAILGUN_API_KEY, MAILGUN_DOMAIN or LEAD_TO_EMAIL is not set.")
     return json(500, { ok: false, error: "Email is not configured." })
   }
   const base = process.env.MAILGUN_REGION?.toLowerCase() === "eu" ? "https://api.eu.mailgun.net" : "https://api.mailgun.net"
-  const to = (process.env.LEAD_TO_EMAIL || DEFAULT_TO).split(",").map((s) => s.trim()).filter(Boolean)
   const from = process.env.LEAD_FROM_EMAIL || `DriveIt Website <leads@${domain}>`
 
   const { subject, text, html } = buildEmail(lead)
