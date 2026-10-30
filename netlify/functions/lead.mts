@@ -4,13 +4,19 @@
 // Environment variables (set in Netlify > Site configuration > Environment
 // variables; values in netlify.toml are NOT visible to functions):
 //   MAILGUN_API_KEY   required  Mailgun API key
-//   MAILGUN_DOMAIN    required  verified Mailgun sending domain, e.g. mg.rentdriveit.com
+//   MAILGUN_DOMAIN    required  verified Mailgun sending domain, e.g. mg.driveitrentalcars.com
 //   MAILGUN_REGION    optional  "us" (default) or "eu", wherever the domain was created
 //   LEAD_TO_EMAIL     optional  recipient(s), comma-separated; defaults to the business inbox
 //   LEAD_FROM_EMAIL   optional  sender; defaults to "DriveIt Website <leads@MAILGUN_DOMAIN>"
 
 const DEFAULT_TO = "driveitrentalcars@gmail.com"
-const ALLOWED_HOSTS = ["rentdriveit.com", "www.rentdriveit.com", "localhost"]
+const ALLOWED_HOSTS = [
+  "rentdriveit.com",
+  "www.rentdriveit.com",
+  "driveitrentalcars.com",
+  "www.driveitrentalcars.com",
+  "localhost",
+]
 
 type Lead = {
   name: string
