@@ -28,11 +28,8 @@ import { THANK_YOU_PATH, saveLeadConfirmation } from "@/lib/lead-confirmation"
 import { carPreferences } from "@/lib/rental"
 import { site } from "@/lib/site"
 
-// Netlify detects the "lead" form from public/__forms.html at deploy time and
-// accepts URL-encoded POSTs to it. Submissions land in Netlify > Forms and are
-// emailed to the addresses set under Forms > Form notifications.
-const LEAD_ENDPOINT = "/__forms.html"
-const FORM_NAME = "lead"
+// Netlify Function (netlify/functions/lead.mts) that emails the lead via Mailgun.
+const LEAD_ENDPOINT = "/api/lead"
 
 type Errors = Partial<Record<"name" | "phone" | "date" | "duration", string>>
 type Status = "idle" | "sending" | "error"
@@ -100,8 +97,7 @@ function LeadForm({
     if (Object.keys(found).length > 0) return
 
     setStatus("sending")
-    const body = new URLSearchParams({
-      "form-name": FORM_NAME,
+    const lead = {
       "bot-field": botField,
       name: draft.name.trim(),
       phone: draft.phone.trim(),
@@ -110,18 +106,18 @@ function LeadForm({
       duration: draft.duration ?? "",
       car_preference: preference,
       source,
-    })
+    }
     try {
       const response = await fetch(LEAD_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(lead),
       })
       if (!response.ok) throw new Error(`Lead submission failed: ${response.status}`)
       saveLeadConfirmation({
         firstName: draft.name.trim().split(/\s+/)[0],
         phone: draft.phone.trim(),
-        pickupDate: body.get("pickup_date") ?? "",
+        pickupDate: lead.pickup_date,
         pickupTime: draft.time,
         duration: draft.duration ?? "",
         carPreference: preference,
@@ -146,7 +142,7 @@ function LeadForm({
         </DialogDescription>
       </DialogHeader>
 
-      {/* Honeypot for bots; Netlify drops submissions that fill it in. */}
+      {/* Honeypot for bots; the server ignores submissions that fill it in. */}
       <p className="hidden">
         <label>
           Leave this empty
