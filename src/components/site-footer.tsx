@@ -9,7 +9,7 @@ import { site } from "@/lib/site"
 
 export function SiteFooter() {
   return (
-    <footer className="mt-20 border-t border-line md:mt-28">
+    <footer id="site-footer" className="mt-20 border-t border-line md:mt-28">
       <div className={`${container} flex flex-col gap-10 py-14 md:flex-row md:items-start md:justify-between`}>
         <div className="max-w-xs">
           <Image src="/brand/logo.png" alt={site.name} width={800} height={314} className="h-14 w-auto" />

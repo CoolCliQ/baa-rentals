@@ -12,7 +12,7 @@ export function RentalSelector() {
   const { draft, updateDraft, openLeadForm } = useLeadForm()
 
   return (
-    <section aria-labelledby="selector-title" className={`${container} mt-14 md:mt-20`}>
+    <section id="rental-selector" aria-labelledby="selector-title" className={`${container} mt-14 md:mt-20`}>
       <div className="rounded-[1.75rem] border border-line bg-white p-5 shadow-[0_24px_60px_-32px_rgba(5,31,59,0.35)] md:p-7">
         <h2 id="selector-title" className="text-lg font-bold text-navy md:text-xl">
           When do you need the car?
@@ -29,6 +29,7 @@ export function RentalSelector() {
           </div>
           <button
             type="button"
+            id="cta-selector-get-my-quote"
             onClick={() => openLeadForm({ source: "selector", label: "Get My Quote" })}
             className={cn(
               buttonVariants({ variant: "accent", size: "cta" }),

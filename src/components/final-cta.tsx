@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button"
 
 export function FinalCta() {
   return (
-    <section className={container}>
+    <section id="final-cta" className={container}>
       <div className="relative overflow-hidden rounded-[2rem] bg-navy px-6 py-14 text-center md:px-12 md:py-20">
         <div
           className="absolute -top-24 -right-24 size-64 rounded-full bg-sun/15 blur-2xl"

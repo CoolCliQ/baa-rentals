@@ -40,6 +40,7 @@ export function Location() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <LeadButton source="location" label="Book a Car" arrow />
             <a
+              id="directions-location"
               href={site.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"

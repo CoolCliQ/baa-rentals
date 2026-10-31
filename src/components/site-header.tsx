@@ -10,7 +10,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-line/70 bg-white/90 pt-[env(safe-area-inset-top,0px)] backdrop-blur-xl">
       <div className={`${container} flex h-16 items-center justify-between gap-4 md:h-20`}>
-        <Link href="/" className="shrink-0">
+        <Link href="/" id="logo-home" className="shrink-0">
           <Image
             src="/brand/logo.png"
             alt={site.name}
@@ -25,6 +25,7 @@ export function SiteHeader() {
           {navItems.map((item) => (
             <a
               key={item.id}
+              id={`nav-${item.id}`}
               href={`/#${item.id}`}
               className="text-[15px] font-medium text-ink-muted transition-colors hover:text-navy"
             >
@@ -43,6 +44,7 @@ export function SiteHeader() {
           </CallLink>
           <CallLink
             source="header"
+            id="call-header-mobile"
             aria-label={`Call ${site.phone.display}`}
             className="flex size-11 items-center justify-center rounded-full border border-line text-navy transition-colors hover:bg-canvas md:hidden"
           >

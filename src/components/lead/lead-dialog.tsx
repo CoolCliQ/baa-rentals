@@ -132,7 +132,7 @@ function LeadForm({
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="flex flex-col">
+    <form id="lead-form" name="lead-form" noValidate onSubmit={handleSubmit} className="flex flex-col">
       <DialogHeader className="gap-1.5 pr-6">
         <DialogTitle className="text-2xl font-bold tracking-tight text-navy">
           Get your quote
@@ -230,6 +230,7 @@ function LeadForm({
 
       <button
         type="submit"
+        id="lead-form-submit"
         disabled={status === "sending"}
         className={cn(buttonVariants({ variant: "accent", size: "cta-lg" }), "mt-6 w-full")}
       >
@@ -243,6 +244,7 @@ function LeadForm({
         )}
       </button>
       <a
+        id="call-lead-form"
         href={site.phone.href}
         onClick={() => track("phone_click", { cta_location: "lead_form" })}
         className="mt-4 inline-flex items-center justify-center gap-2 text-[14px] font-medium text-ink-muted hover:text-navy"

@@ -44,7 +44,7 @@ export function ThankYou() {
     : []
 
   return (
-    <section className={`${container} flex flex-1 flex-col items-center py-20 text-center md:py-28`}>
+    <section id="thank-you" className={`${container} flex flex-1 flex-col items-center py-20 text-center md:py-28`}>
       <div className="flex size-20 items-center justify-center rounded-full bg-sun-50">
         <CircleCheck className="size-10 text-navy" aria-hidden />
       </div>
@@ -73,7 +73,7 @@ export function ThankYou() {
       )}
 
       <div className="mt-10 flex w-full max-w-md flex-col gap-3 sm:flex-row">
-        <Link href="/" className={cn(buttonVariants({ variant: "navy", size: "cta" }), "sm:flex-1")}>
+        <Link href="/" id="thank-you-home" className={cn(buttonVariants({ variant: "navy", size: "cta" }), "sm:flex-1")}>
           Back to home
         </Link>
         <CallLink

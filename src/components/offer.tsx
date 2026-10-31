@@ -5,7 +5,7 @@ import { container } from "@/components/eyebrow"
 
 export function Offer() {
   return (
-    <section className={`${container} pt-20 md:pt-28`}>
+    <section id="offer" className={`${container} pt-20 md:pt-28`}>
       <div className="flex flex-col gap-6 rounded-3xl bg-sun-50 p-7 md:flex-row md:items-center md:justify-between md:p-10">
         <div className="flex items-start gap-4">
           <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-sun">

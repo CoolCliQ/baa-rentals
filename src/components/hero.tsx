@@ -6,7 +6,7 @@ import { site } from "@/lib/site"
 
 export function Hero() {
   return (
-    <section className={`${container} pt-10 md:pt-16`}>
+    <section id="hero" className={`${container} pt-10 md:pt-16`}>
       <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div>
           <Eyebrow>Car rentals · {site.area}</Eyebrow>
