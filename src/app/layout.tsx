@@ -1,7 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
-import { AnalyticsScripts, GtmNoScript, gtmSnippet } from "@/components/analytics-scripts";
+import {
+  AnalyticsScripts,
+  GtmNoScript,
+  gtagSnippet,
+  gtagSrc,
+  gtmSnippet,
+} from "@/components/analytics-scripts";
 import { LeadProvider } from "@/components/lead/lead-provider";
 import { site } from "@/lib/site";
 import "./globals.css";
@@ -42,10 +48,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${plusJakartaSans.variable} h-full antialiased`}
     >
-      {gtmSnippet && (
+      {(gtmSnippet || gtagSnippet) && (
         <head>
           {/* Google Tag Manager, as high in <head> as possible (per GTM's install guide). */}
-          <script id="gtm" dangerouslySetInnerHTML={{ __html: gtmSnippet }} />
+          {gtmSnippet && <script id="gtm" dangerouslySetInnerHTML={{ __html: gtmSnippet }} />}
+          {/* Google tag (gtag.js) for Google Ads conversion tracking. */}
+          {gtagSrc && <script async src={gtagSrc} />}
+          {gtagSnippet && <script id="google-tag" dangerouslySetInnerHTML={{ __html: gtagSnippet }} />}
         </head>
       )}
       <body className="flex min-h-full flex-col">

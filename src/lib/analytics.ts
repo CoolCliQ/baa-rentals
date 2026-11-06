@@ -1,5 +1,6 @@
-// Conversion tracking. Every event goes to the GTM dataLayer, and to gtag (GA4 /
-// Google Ads) and the Meta Pixel when those are loaded (see AnalyticsScripts).
+// Conversion tracking. Every event goes to the GTM dataLayer (GA4 is configured
+// in GTM). The Google Ads lead conversion fires via gtag on generate_lead, and
+// the Meta Pixel gets Lead/Contact when it is loaded.
 
 type Params = Record<string, string | number | undefined>
 
@@ -18,6 +19,8 @@ export type TrackEvent =
 
 const adsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID
 const adsLeadLabel = process.env.NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL
+// Value Google Ads records per lead (from the conversion action's tag).
+const LEAD_CONVERSION = { value: 1.0, currency: "USD" }
 
 export function track(event: TrackEvent, params: Params = {}) {
   if (typeof window === "undefined") return
@@ -26,11 +29,9 @@ export function track(event: TrackEvent, params: Params = {}) {
   w.dataLayer = w.dataLayer ?? []
   w.dataLayer.push({ event, ...params })
 
-  w.gtag?.("event", event, params)
-
   if (event === "generate_lead") {
     if (adsId && adsLeadLabel) {
-      w.gtag?.("event", "conversion", { send_to: `${adsId}/${adsLeadLabel}` })
+      w.gtag?.("event", "conversion", { send_to: `${adsId}/${adsLeadLabel}`, ...LEAD_CONVERSION })
     }
     w.fbq?.("track", "Lead", params)
   } else if (event === "phone_click") {

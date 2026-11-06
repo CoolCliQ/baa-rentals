@@ -7,3 +7,6 @@
   NODE_VERSION = "22"
   # Google Tag Manager container (production only; local dev loads no tracking)
   NEXT_PUBLIC_GTM_ID = "GTM-KSKLR8LT"
+  # Google Ads "Submit lead form" conversion (fires on /thank-you via generate_lead)
+  NEXT_PUBLIC_GOOGLE_ADS_ID = "AW-18530304114"
+  NEXT_PUBLIC_GOOGLE_ADS_LEAD_LABEL = "UEtKCNDita8dEPKA-INF"
